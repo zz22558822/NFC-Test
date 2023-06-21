@@ -47,7 +47,7 @@ function startNfcScan() {
 		  console.log(record.data);
 		}
   
-		statusElement.innerHTML = '<i class="fas fa-tag"></i> NFC 狀態：已讀取';
+		statusElement.innerHTML = '<i class="fas fa-check"></i> NFC 狀態：已讀取';
 	  });
   
 	  reader.scan().catch(error => {
@@ -55,7 +55,7 @@ function startNfcScan() {
 	  });
 	} else {
 	  console.error('Web NFC API is not supported in this browser.');
-	  document.getElementById('status').innerHTML = '<i class="fas fa-exclamation-circle"></i> NFC 功能不支援';
+	  document.getElementById('status').innerHTML = '<i class="fas fa-times red"></i> NFC 功能不支援';
 	}
   }
   
