@@ -39,8 +39,8 @@ function startNfcScan() {
     const statusElement = document.getElementById('status');
     statusElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 請掃描 NFC'; // 初始狀態：請掃描 NFC，並加上旋轉的 Spinner 圖示
 
-    const valueInput = document.getElementById('valueInput');
-    valueInput.value = ''; // 清空數值框的值
+    const valueContainer = document.getElementById('valueContainer');
+    valueContainer.innerHTML = ''; // 清空數值容器
 
     const reader = new NDEFReader();
 
@@ -50,8 +50,12 @@ function startNfcScan() {
       for (const record of records) {
         console.log(record.data);
 
-        // 將讀取到的值轉換為字串形式，並設定到數值框中
-        valueInput.value = JSON.stringify(record.data);
+        // 創建一個新的元素來顯示每個記錄的值
+        const valueElement = document.createElement('input');
+        valueElement.type = 'text';
+        valueElement.value = JSON.stringify(record.data);
+        valueElement.disabled = true;
+        valueContainer.appendChild(valueElement);
       }
 
       statusElement.innerHTML = '<i class="fas fa-check"></i> NFC 狀態：已讀取'; // 讀取完成後的狀態：已讀取
