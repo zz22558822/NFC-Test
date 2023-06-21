@@ -192,6 +192,8 @@ body {
 
 body h1 {
   margin-bottom: 20px;
+  font-size: 40px;
+  margin-bottom: 40px;
 }
 
 body i {
@@ -207,6 +209,23 @@ body .status {
   font-size: 24px;
   margin-bottom: 10px;
   color: #333;
+}
+
+body #valueInput {
+  min-width: 30%;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  -webkit-transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+body #valueInput:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
 body button {
