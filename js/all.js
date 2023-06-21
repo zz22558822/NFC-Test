@@ -50,8 +50,8 @@ function startNfcScan() {
       for (const record of records) {
         console.log(record.data);
 
-        // 將讀取到的值設定到數值框中
-        valueInput.value = record.data;
+        // 將讀取到的值轉換為字串形式，並設定到數值框中
+        valueInput.value = JSON.stringify(record.data);
       }
 
       statusElement.innerHTML = '<i class="fas fa-check"></i> NFC 狀態：已讀取'; // 讀取完成後的狀態：已讀取
@@ -66,3 +66,4 @@ function startNfcScan() {
     document.getElementById('status').innerHTML = '<i class="fas fa-times red"></i> NFC 功能不支援';
   }
 }
+
