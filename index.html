@@ -32,11 +32,23 @@
 
   <body>
 
-    <h1>NFC 狀態</h1>
+    
+    <!-- V1 -->
+    <!-- <h1>NFC 狀態</h1>
     <div class="status" id="status">
       <i class="fas fa-tag"></i> NFC 狀態：未讀取
-    </div>
+    </div> -->
 
+    <!-- V2 -->
+    <h1>NFC 狀態</h1>
+
+    <div class="status" id="status">
+      <i class="fas fa-tag"></i>請掃描
+    </div>
+  
+    <button id="scanButton" onclick="startNfcScan()">
+      <i class="fas fa-search"></i> 開啟 NFC 掃描
+    </button>
 
 
     <!--JS載入-->
