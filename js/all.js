@@ -35,39 +35,34 @@
 
 // V2
 function startNfcScan() {
-  if ('NDEFReader' in window) {
-    const statusElement = document.getElementById('status');
-    statusElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 請掃描 NFC'; // 初始狀態：請掃描 NFC，並加上旋轉的 Spinner 圖示
+    if ('NDEFReader' in window) {
+      const statusElement = document.getElementById('status');
+      statusElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 請掃描 NFC'; // 初始狀態：請掃描 NFC，並加上旋轉的 Spinner 圖示
 
-    const valueContainer = document.getElementById('valueContainer');
-    valueContainer.innerHTML = ''; // 清空數值容器
+      const valueInput = document.getElementById('valueInput');
+      valueInput.value = ''; // 清空數值框的值
 
-    const reader = new NDEFReader();
+      const reader = new NDEFReader();
 
-    reader.addEventListener('reading', event => {
-      const records = event.message.records;
+      reader.addEventListener('reading', event => {
+        const records = event.message.records;
 
-      for (const record of records) {
-        console.log(record.data);
+        for (const record of records) {
+          console.log(record.data);
 
-        // 創建一個新的元素來顯示每個記錄的值
-        const valueElement = document.createElement('input');
-        valueElement.type = 'text';
-        valueElement.value = JSON.stringify(record.data);
-        valueElement.disabled = true;
-        valueContainer.appendChild(valueElement);
-      }
+          // 將讀取到的值設定到數值框中
+          valueInput.value = record.data;
+        }
 
-      statusElement.innerHTML = '<i class="fas fa-check"></i> NFC 狀態：已讀取'; // 讀取完成後的狀態：已讀取
-    });
+        statusElement.innerHTML = '<i class="fas fa-check"></i> NFC 狀態：已讀取'; // 讀取完成後的狀態：已讀取
+      });
 
-    reader.scan().catch(error => {
-      console.error('Error scanning NFC: ', error);
-      statusElement.innerHTML = '<i class="fas fa-times red"></i> 無法掃描 NFC'; // NFC 功能未啟用的狀態
-    });
-  } else {
-    console.error('Web NFC API is not supported in this browser.');
-    document.getElementById('status').innerHTML = '<i class="fas fa-times red"></i> NFC 功能不支援';
+      reader.scan().catch(error => {
+        console.error('Error scanning NFC: ', error);
+      });
+    } else {
+      console.error('Web NFC API is not supported in this browser.');
+      document.getElementById('status').innerHTML = '<i class="fas fa-times red"></i> NFC 功能不支援';
+    }
   }
-}
 
