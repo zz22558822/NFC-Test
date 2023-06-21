@@ -1,0 +1,24 @@
+@import 'reset';
+@import './mixin/RWD';
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .status {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+}
+
+
+
+
