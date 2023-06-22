@@ -48,7 +48,7 @@ function startNfcScan() {
       const records = event.message.records;
 
       for (const record of records) {
-	console.log(record;
+	console.log(record);
         console.log(record.data);
 
         // 將讀取到的值轉換為字串形式，並設定到數值框中
